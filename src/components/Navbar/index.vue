@@ -55,7 +55,6 @@ export default {
     const test = (): void => {
       const newValue: boolean = window.scrollY === 0;
       if (isTop.value !== newValue) {
-        console.log("changeValue");
         isTop.value = newValue;
       }
     };
