@@ -6,7 +6,7 @@ import {
   createWebHistory,
   Router,
 } from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "../views/Home/index.vue";
 
 const routes: RouteRecordRaw[] = [
   {
