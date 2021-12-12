@@ -1,6 +1,6 @@
 <template>
-  <nav class="sticky top-0 bg-white">
-    <div class="px-6 py-2 mx-auto flex justify-between" @scroll="test()">
+  <nav :class="navbarClass">
+    <div class="px-6 py-2 mx-auto flex justify-between">
       <div class="flex content-center items-center">
         <!--Sidebar button mobile only-->
         <button class="hover:bg-gray-100 rounded-full p-2 duration-100 sm:hidden">
@@ -45,12 +45,38 @@
 </template>
 
 <script lang="ts">
+import { onMounted, onUnmounted, Ref, ref, computed, ComputedRef } from "vue";
+
 export default {
   name: "Navbar",
-  methods: {
-    test: function (): void {
-      console.log("TEST")
-    }
+  setup() {
+    const isTop: Ref<boolean> = ref<boolean>(true);
+
+    const test = (): void => {
+      const newValue: boolean = window.scrollY === 0;
+      if (isTop.value !== newValue) {
+        console.log("changeValue");
+        isTop.value = newValue;
+      }
+    };
+
+    onMounted((): void => {
+      document.addEventListener("scroll", test);
+    });
+
+    onUnmounted((): void => {
+      document.removeEventListener("scroll", test);
+    });
+
+    const navbarClass: ComputedRef<string> = computed((): string => {
+      let fixedClass = "sticky top-0 bg-white ";
+      fixedClass += !isTop.value ? "border-b-2 border-orange-400" : "";
+      return fixedClass;
+    });
+
+    return {
+      navbarClass
+    };
   }
-}
+};
 </script>
