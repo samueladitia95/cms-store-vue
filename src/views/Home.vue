@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="handleCount(true)">Increment</button>
-    <h1>{{ count }}</h1>
+    <h1>{{ count; }}</h1>
     <button @click="handleCount(false)">Decrement</button>
   </div>
 </template>

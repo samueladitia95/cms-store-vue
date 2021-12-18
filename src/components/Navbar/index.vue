@@ -1,9 +1,12 @@
 <template>
-  <nav :class="navbarClass">
+  <nav class="sticky top-0 bg-white" :class="{ 'border-b-2 border-orange-400': isBottomBorder }">
     <div class="px-6 py-2 mx-auto flex justify-between">
       <div class="flex content-center items-center">
         <!--Sidebar button mobile only-->
-        <button class="hover:bg-gray-100 rounded-full p-2 duration-100 sm:hidden">
+        <button
+          class="hover:bg-gray-100 rounded-full p-2 duration-100 sm:hidden"
+          @click="toggleSidebar"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6"
@@ -45,36 +48,33 @@
 </template>
 
 <script lang="ts">
-import { onMounted, onUnmounted, Ref, ref, computed, ComputedRef } from "vue";
+import { onMounted, onUnmounted, Ref, ref } from "vue";
+import { useStore } from "../../store";
 
 export default {
   name: "Navbar",
   setup() {
-    const isTop: Ref<boolean> = ref<boolean>(true);
+    const { commit } = useStore();
+    const isBottomBorder: Ref<boolean> = ref<boolean>(false);
 
-    const test = (): void => {
-      const newValue: boolean = window.scrollY === 0;
-      if (isTop.value !== newValue) {
-        isTop.value = newValue;
+    //! Lifecycles
+    onMounted((): void => document.addEventListener("scroll", bottomBorder));
+
+    onUnmounted((): void => document.removeEventListener("scroll", bottomBorder));
+
+    //! Methods
+    const bottomBorder = (): void => {
+      const newValue: boolean = window.scrollY !== 0;
+      if (isBottomBorder.value !== newValue) {
+        isBottomBorder.value = newValue;
       }
     };
 
-    onMounted((): void => {
-      document.addEventListener("scroll", test);
-    });
-
-    onUnmounted((): void => {
-      document.removeEventListener("scroll", test);
-    });
-
-    const navbarClass: ComputedRef<string> = computed((): string => {
-      let fixedClass = "sticky top-0 bg-white ";
-      fixedClass += !isTop.value ? "border-b-2 border-orange-400" : "";
-      return fixedClass;
-    });
+    const toggleSidebar = (): void => commit("SET_IS_SIDEBAR_OPEN", true);
 
     return {
-      navbarClass
+      isBottomBorder,
+      toggleSidebar
     };
   }
 };
