@@ -27,7 +27,9 @@ export default defineComponent({
     }
   },
   setup({ size, logo }) {
+    //! Data
     const sizeClass: Ref<string> = ref(`h-${size} w-${size}`);
+
     return {
       sizeClass,
       logo
