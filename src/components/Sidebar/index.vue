@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col bg-gray-50 min-h-full w-72 h-1 p-4 overflow-y-auto transform transition duration-200 ease-in-out fixed top-0"
+    class="flex flex-col bg-gray-50 min-h-full w-80 h-1 p-4 overflow-y-auto transform transition duration-200 ease-in-out fixed top-0"
     :class="{ '-translate-x-full': sidebarClass }"
   >
     <!-- Header -->
