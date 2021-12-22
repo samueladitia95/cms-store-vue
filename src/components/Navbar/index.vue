@@ -30,11 +30,11 @@
 </template>
 
 <script lang="ts">
-import { onMounted, onUnmounted, Ref, ref } from "vue";
+import { defineComponent, onMounted, onUnmounted, Ref, ref } from "vue";
 import { useStore } from "../../store";
 import ButtonLogo from "../ButtonLogo/index.vue";
 
-export default {
+export default defineComponent({
   name: "Navbar",
   components: {
     ButtonLogo
@@ -63,5 +63,5 @@ export default {
       toggleSidebar
     };
   }
-};
+});
 </script>
