@@ -3,25 +3,7 @@
     <div class="px-6 py-2 mx-auto flex justify-between">
       <div class="flex content-center items-center">
         <!--Sidebar button mobile only-->
-        <button
-          class="hover:bg-gray-100 rounded-full p-2 duration-100 sm:hidden"
-          @click="toggleSidebar"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h7"
-            />
-          </svg>
-        </button>
+        <button-logo logo="M4 6h16M4 12h16M4 18h7" @click="toggleSidebar" />
         <div class="flex items-center space-x-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -50,9 +32,13 @@
 <script lang="ts">
 import { onMounted, onUnmounted, Ref, ref } from "vue";
 import { useStore } from "../../store";
+import ButtonLogo from "../ButtonLogo/index.vue";
 
 export default {
   name: "Navbar",
+  components: {
+    ButtonLogo
+  },
   setup() {
     const { commit } = useStore();
     const isBottomBorder: Ref<boolean> = ref<boolean>(false);

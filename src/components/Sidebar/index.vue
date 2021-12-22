@@ -25,25 +25,7 @@
       </div>
 
       <!-- Close Button -->
-      <button
-        class="hover:bg-gray-100 rounded-full p-2 duration-100 sm:hidden"
-        @click="toggleSidebar"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
+      <button-logo @click="toggleSidebar" logo="M6 18L18 6M6 6l12 12" />
     </div>
 
     <!-- Navigation + Footer -->
@@ -199,22 +181,21 @@
 
 <script lang="ts">import { computed, ComputedRef } from "vue";
 import { useStore } from "../../store";
+import ButtonLogo from "../ButtonLogo/index.vue";
 
 export default {
   name: "Sidebar",
   setup() {
     const { state, commit } = useStore();
-
     //! Methods
     const toggleSidebar = (): void => commit("SET_IS_SIDEBAR_OPEN", false);
-
     //! Computed
     const sidebarClass: ComputedRef<boolean> = computed((): boolean => !state.isSidebarOpen);
-
     return {
       sidebarClass,
       toggleSidebar
     };
-  }
+  },
+  components: { ButtonLogo }
 };
 </script>
