@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col bg-gray-50 min-h-full w-80 h-1 p-4 overflow-y-auto transform transition duration-200 ease-in-out fixed top-0"
+    class="flex flex-col bg-gray-50 min-h-full w-72 h-1 p-4 overflow-y-auto transform transition duration-200 ease-in-out fixed top-0"
     :class="{ '-translate-x-full': sidebarClass }"
   >
     <!-- Header -->
@@ -22,19 +22,8 @@
     <!-- Navigation + Footer -->
     <div class="flex flex-col flex-1 space-y-4 justify-around">
       <!-- Navigation -->
-      <div class="flex-1 flex flex-col space-y-4 pt-4">
-        <a class="flex space-x-3 font-bold cursor-pointer hover:bg-gray-200 p-1 rounded">
-          <svg-logo
-            logo="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"
-          />
-          <p>Dashboard</p>
-        </a>
-        <a class="flex space-x-3 font-bold cursor-pointer hover:bg-gray-200 p-1 rounded">
-          <svg-logo
-            logo="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"
-          />
-          <p>Store</p>
-        </a>
+      <div class="flex-1 flex flex-col space-y-2 pt-4">
+        <nav-item v-for="navigation in navigations" :navigation="navigation" />
       </div>
 
       <hr />
@@ -84,26 +73,112 @@
 <script lang="ts">
 import { computed, ComputedRef, defineComponent } from "vue";
 import { useStore } from "../../store";
+import { Navigation } from "./interface";
+
 import ButtonLogo from "../ButtonLogo/index.vue";
 import SvgLogo from "../SvgLogo/index.vue";
+import NavItem from "./subComponents/NavItem.vue"
 
 export default defineComponent({
   name: "Sidebar",
   components: {
     SvgLogo,
-    ButtonLogo
+    ButtonLogo,
+    NavItem
   },
   setup() {
     const { state, commit } = useStore();
+
+    //! Data
+    const navigations: Navigation[] = [
+      {
+        category: "Dashboard",
+        link: "/dashboard",
+        logo: "M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"
+      },
+      {
+        category: "Store",
+        secondaryLink: "/secondary-link",
+        logo: "M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z",
+        children: [
+          {
+            label: "Subcategory1",
+            link: "/sub-category-1"
+          },
+          {
+            label: "Subcategory2",
+            link: "/sub-category-2"
+          },
+          {
+            label: "Subcategory3",
+            link: "/sub-category-3"
+          },
+          {
+            label: "Subcategory4",
+            link: "/sub-category-4"
+          }
+        ]
+      },
+
+      {
+        category: "Store",
+        link: "",
+        logo: "M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z",
+        children: [
+          {
+            label: "Subcategory1",
+            link: "/sub-category-1",
+            secondaryLink: "/secondary-link",
+          },
+          {
+            label: "Subcategory2",
+            link: "/sub-category-2"
+          },
+          {
+            label: "Subcategory3",
+            link: "/sub-category-3"
+          },
+          {
+            label: "Subcategory4",
+            link: "/sub-category-4"
+          },
+          {
+            label: "Subcategory4",
+            link: "/sub-category-4"
+          }
+        ]
+      },
+      {
+        category: "Store",
+        link: "",
+        logo: "M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z",
+        children: [
+          {
+            label: "Subcategory1",
+            link: "/sub-category-1"
+          },
+          {
+            label: "Subcategory2",
+            link: "/sub-category-2"
+          },
+          {
+            label: "Subcategory3",
+            link: "/sub-category-3"
+          },
+        ]
+      },
+    ];
 
     //! Methods
     const toggleSidebar = (): void => commit("SET_IS_SIDEBAR_OPEN", false);
 
     //! Computed
     const sidebarClass: ComputedRef<boolean> = computed((): boolean => !state.isSidebarOpen);
+
     return {
       sidebarClass,
-      toggleSidebar
+      toggleSidebar,
+      navigations
     };
   },
 });
