@@ -94,79 +94,39 @@ export default defineComponent({
       {
         category: "Dashboard",
         link: "/dashboard",
-        logo: "M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"
+        logo: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
       },
       {
         category: "Store",
-        secondaryLink: "/secondary-link",
-        logo: "M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z",
+        logo: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z",
         children: [
           {
-            label: "Subcategory1",
-            link: "/sub-category-1"
+            label: "Orders",
+            link: "/orders"
           },
           {
-            label: "Subcategory2",
-            link: "/sub-category-2"
+            label: "Spare Parts",
+            link: "/spare-parts",
+            secondaryLink: "/spare-parts/add"
           },
           {
-            label: "Subcategory3",
-            link: "/sub-category-3"
-          },
-          {
-            label: "Subcategory4",
-            link: "/sub-category-4"
-          }
-        ]
-      },
-
-      {
-        category: "Store",
-        link: "",
-        logo: "M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z",
-        children: [
-          {
-            label: "Subcategory1",
-            link: "/sub-category-1",
-            secondaryLink: "/secondary-link",
-          },
-          {
-            label: "Subcategory2",
-            link: "/sub-category-2"
-          },
-          {
-            label: "Subcategory3",
-            link: "/sub-category-3"
-          },
-          {
-            label: "Subcategory4",
-            link: "/sub-category-4"
-          },
-          {
-            label: "Subcategory4",
-            link: "/sub-category-4"
+            label: "Category",
+            link: "/category",
+            secondaryLink: "/category/add"
           }
         ]
       },
       {
-        category: "Store",
-        link: "",
-        logo: "M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z",
+        category: "Setting",
+        logo: "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4",
         children: [
           {
-            label: "Subcategory1",
-            link: "/sub-category-1"
-          },
-          {
-            label: "Subcategory2",
-            link: "/sub-category-2"
-          },
-          {
-            label: "Subcategory3",
-            link: "/sub-category-3"
-          },
+            label: "Users",
+            link: "/users",
+            secondaryLink: "/users/add"
+          }
         ]
-      },
+      }
     ];
 
     //! Methods
