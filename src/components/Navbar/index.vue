@@ -3,8 +3,8 @@
     <div class="px-6 py-2 mx-auto flex justify-between">
       <div class="flex content-center items-center">
         <!--Sidebar button mobile only-->
-        <button-logo logo="M4 6h16M4 12h16M4 18h7" @click="toggleSidebar" />
-        <div class="flex items-center space-x-1">
+        <button-logo logo="M4 6h16M4 12h16M4 18h7" @click="toggleSidebar" class="md:hidden"/>
+        <div class="flex items-center space-x-1 md:hidden">
           <svg-logo
             :size="10"
             logo="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z"

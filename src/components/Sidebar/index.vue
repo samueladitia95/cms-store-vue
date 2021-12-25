@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div class="md:static">
     <!-- Black Shadow -->
     <div
-      class="bg-black opacity-40 absolute h-screen w-screen top-0 left-0"
+      class="bg-black opacity-40 fixed h-full w-screen top-0 left-0 md:hidden md:static z-10"
       :class="{ 'hidden': sidebarClass }"
       @click="toggleSidebar"
     ></div>
-
+    
     <div
-      class="flex flex-col bg-gray-50 min-h-full w-72 h-1 p-4 z-40 overflow-y-auto transform transition duration-200 ease-in-out fixed top-0"
+      class="flex flex-col bg-gray-50 min-h-full w-72 h-1 p-4 z-40 overflow-y-auto transform transition duration-200 ease-in-out fixed top-0 md:transform-none"
       :class="{ '-translate-x-full': sidebarClass }"
     >
       <!-- Header -->
@@ -24,7 +24,7 @@
         </div>
 
         <!-- Close Button -->
-        <button-logo @click="toggleSidebar" logo="M6 18L18 6M6 6l12 12" />
+        <button-logo @click="toggleSidebar" logo="M6 18L18 6M6 6l12 12" class="md:hidden" />
       </div>
 
       <!-- Navigation + Footer -->

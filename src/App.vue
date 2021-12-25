@@ -1,8 +1,10 @@
 <template>
-  <div class="font-display">
-    <Navbar />
-    <Sidebar />
-    <router-view />
+  <div class="font-display md:flex">
+    <sidebar />
+    <div class="md:absolute md:left-72 md:top-0">
+      <navbar />
+      <router-view />
+    </div>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <button class="hover:bg-gray-100 rounded-full p-2 duration-100 sm:hidden">
+  <button class="hover:bg-gray-100 rounded-full p-2 duration-100">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       :class="sizeClass"
