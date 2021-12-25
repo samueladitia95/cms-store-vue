@@ -1,7 +1,7 @@
 <template>
   <div class="font-display md:flex">
     <sidebar />
-    <div class="md:absolute md:left-72 md:top-0">
+    <div class="flex-grow">
       <navbar />
       <router-view />
     </div>
